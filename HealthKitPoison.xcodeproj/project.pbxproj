@@ -11,6 +11,12 @@
 		3A13A15F2AEB10EF00A303C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A15E2AEB10EF00A303C8 /* ContentView.swift */; };
 		3A13A1612AEB10F000A303C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A13A1602AEB10F000A303C8 /* Assets.xcassets */; };
 		3A13A1642AEB10F000A303C8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A13A1632AEB10F000A303C8 /* Preview Assets.xcassets */; };
+		3A13A16B2AEB117200A303C8 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A16A2AEB117200A303C8 /* HealthManager.swift */; };
+		3A13A16E2AEB11ED00A303C8 /* HealthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A16D2AEB11ED00A303C8 /* HealthError.swift */; };
+		3A13A1702AEB120900A303C8 /* HealthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A16F2AEB120900A303C8 /* HealthType.swift */; };
+		3A13A1722AEB141A00A303C8 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A1712AEB141A00A303C8 /* HealthStore.swift */; };
+		3A13A1742AEB145200A303C8 /* Poisoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A1732AEB145200A303C8 /* Poisoner.swift */; };
+		3A13A1762AEB152B00A303C8 /* HealthValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A1752AEB152B00A303C8 /* HealthValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		3A13A15E2AEB10EF00A303C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3A13A1602AEB10F000A303C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A13A1632AEB10F000A303C8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3A13A16A2AEB117200A303C8 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		3A13A16D2AEB11ED00A303C8 /* HealthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthError.swift; sourceTree = "<group>"; };
+		3A13A16F2AEB120900A303C8 /* HealthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthType.swift; sourceTree = "<group>"; };
+		3A13A1712AEB141A00A303C8 /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
+		3A13A1732AEB145200A303C8 /* Poisoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poisoner.swift; sourceTree = "<group>"; };
+		3A13A1752AEB152B00A303C8 /* HealthValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,7 @@
 		3A13A15B2AEB10EF00A303C8 /* HealthKitPoison */ = {
 			isa = PBXGroup;
 			children = (
+				3A13A16C2AEB11C500A303C8 /* HealthPoisoner */,
 				3A13A15C2AEB10EF00A303C8 /* HealthKitPoisonApp.swift */,
 				3A13A15E2AEB10EF00A303C8 /* ContentView.swift */,
 				3A13A1602AEB10F000A303C8 /* Assets.xcassets */,
@@ -65,6 +78,19 @@
 				3A13A1632AEB10F000A303C8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3A13A16C2AEB11C500A303C8 /* HealthPoisoner */ = {
+			isa = PBXGroup;
+			children = (
+				3A13A16A2AEB117200A303C8 /* HealthManager.swift */,
+				3A13A16D2AEB11ED00A303C8 /* HealthError.swift */,
+				3A13A16F2AEB120900A303C8 /* HealthType.swift */,
+				3A13A1712AEB141A00A303C8 /* HealthStore.swift */,
+				3A13A1732AEB145200A303C8 /* Poisoner.swift */,
+				3A13A1752AEB152B00A303C8 /* HealthValue.swift */,
+			);
+			path = HealthPoisoner;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +163,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A13A1742AEB145200A303C8 /* Poisoner.swift in Sources */,
+				3A13A16E2AEB11ED00A303C8 /* HealthError.swift in Sources */,
+				3A13A1722AEB141A00A303C8 /* HealthStore.swift in Sources */,
+				3A13A1702AEB120900A303C8 /* HealthType.swift in Sources */,
 				3A13A15F2AEB10EF00A303C8 /* ContentView.swift in Sources */,
 				3A13A15D2AEB10EF00A303C8 /* HealthKitPoisonApp.swift in Sources */,
+				3A13A16B2AEB117200A303C8 /* HealthManager.swift in Sources */,
+				3A13A1762AEB152B00A303C8 /* HealthValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
