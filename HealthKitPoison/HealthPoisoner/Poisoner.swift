@@ -37,7 +37,7 @@ struct Poisoner {
     }
 
     func values(for hour: Date, activityLevel: ActivityLevel) -> [HealthValue] {
-        let types = [HealthType.stepCount]
+        let types = [HealthType.stepCount, HealthType.heartRate]
 
         var values = [HealthValue]()
 
@@ -72,6 +72,23 @@ struct Poisoner {
                 value = Int.random(in: 80..<150)
             case .extremeIntensity:
                 value = Int.random(in: 140..<300)
+            }
+            return HealthValue(sampleType: type, value: Double(value), unit: .count(), date: date)
+        case HealthType.heartRate:
+            var value = 0
+            switch activityLevel {
+            case .resting:
+                value = Int.random(in: 50..<70)
+            case .awake:
+                value = Int.random(in: 50..<70)
+            case .lowIntensity:
+                value = Int.random(in: 55..<80)
+            case .mediumIntensity:
+                value = Int.random(in: 67..<85)
+            case .highIntensity:
+                value = Int.random(in: 80..<100)
+            case .extremeIntensity:
+                value = Int.random(in: 100..<140)
             }
             return HealthValue(sampleType: type, value: Double(value), unit: .count(), date: date)
         default:

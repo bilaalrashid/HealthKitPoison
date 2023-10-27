@@ -13,5 +13,6 @@ struct HealthType {
     static let stepCount = HKQuantityType.quantityType(forIdentifier: .stepCount)!
     static let basalEnergyBurned = HKQuantityType.quantityType(forIdentifier: .basalEnergyBurned)!
     static let activeEnergyBurned = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+    static let heartRate = HKQuantityType.quantityType(forIdentifier: .heartRate)!
 
 }
