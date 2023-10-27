@@ -10,6 +10,8 @@ import HealthKit
 
 struct Poisoner {
 
+    let poisonTypes = [HealthType.stepCount, HealthType.heartRate]
+
     func poisonValues(for date: Date) -> [HealthValue] {
         let activityHours = self.activityHours(for: date)
 
@@ -37,11 +39,9 @@ struct Poisoner {
     }
 
     func values(for hour: Date, activityLevel: ActivityLevel) -> [HealthValue] {
-        let types = [HealthType.stepCount, HealthType.heartRate]
-
         var values = [HealthValue]()
 
-        types.forEach { type in
+        self.poisonTypes.forEach { type in
             let minutes = self.randomMinutes()
             minutes.forEach { minute in
                 if let value = self.randomValue(for: hour, minute: minute, activityLevel: activityLevel, type: type) {
