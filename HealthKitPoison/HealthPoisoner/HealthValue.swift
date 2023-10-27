@@ -8,10 +8,18 @@
 import Foundation
 import HealthKit
 
-struct HealthValue {
-    let sampleType: HKQuantityType
-    let value: Double
-    let unit: HKUnit
-    let date: Date
-    let metadata: [String : Any]? = nil
+class HealthValue {
+    var sampleType: HKQuantityType
+    var value: Double
+    var unit: HKUnit
+    var date: Date
+    var metadata: [String : Any]? = nil
+
+    init(sampleType: HKQuantityType, value: Double, unit: HKUnit, date: Date, metadata: [String : Any]? = nil) {
+        self.sampleType = sampleType
+        self.value = value
+        self.unit = unit
+        self.date = date
+        self.metadata = metadata
+    }
 }

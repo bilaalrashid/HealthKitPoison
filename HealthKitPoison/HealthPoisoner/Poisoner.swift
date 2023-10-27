@@ -25,6 +25,45 @@ struct Poisoner {
         return values
     }
 
+    /// WIP
+    func smoothHourlyChanges(for date: Date, values: [HealthValue], activityHours: [Int : ActivityLevel]) {
+        var cyclicalActivityHours = activityHours
+        cyclicalActivityHours[-1] = cyclicalActivityHours[0]
+        cyclicalActivityHours[24] = cyclicalActivityHours[23]
+
+        for type in poisonTypes {
+            let filtered = values.filter { $0.sampleType == type }
+            
+            for index in -1..<23 {
+                let shouldAllowHourChange = Bool.random()
+                if shouldAllowHourChange {
+                    continue
+                }
+
+                let currentHour = index
+                let nextHour = index + 1
+
+                let difference = cyclicalActivityHours[nextHour]!.rawValue - cyclicalActivityHours[currentHour]!.rawValue
+                let distanceThreshold = Double(abs(difference) * 5) / 2.0
+
+                let currentHourValues = filtered.filter { Calendar.current.component(.hour, from: $0.date) == currentHour }
+                let nextHourValues = filtered.filter { Calendar.current.component(.hour, from: $0.date) == nextHour }
+
+                let beforeChange = currentHourValues.last!
+                let afterChange = nextHourValues.first!
+                let averageValueForTransition = (beforeChange.value - afterChange.value) / 2.0
+
+                let _ = currentHourValues.filter { $0.date > Calendar.current.date(bySetting: .minute, value: 60 - Int(distanceThreshold), of: $0.date)! }.map {
+                    $0.value = averageValueForTransition
+                }
+
+                let _ = nextHourValues.filter { $0.date < Calendar.current.date(bySetting: .minute, value: Int(distanceThreshold), of: $0.date)! }.map {
+                    $0.value = averageValueForTransition
+                }
+            }
+        }
+    }
+
     func activityHours(for date: Date) -> [Int: ActivityLevel] {
         let shouldChooseAnomaly = Int.random(in: 0..<30) == 1
         if shouldChooseAnomaly {

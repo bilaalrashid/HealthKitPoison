@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum ActivityLevel {
-    case resting, awake, lowIntensity, mediumIntensity, highIntensity, extremeIntensity
+enum ActivityLevel: Int {
+    case resting = 0, awake, lowIntensity, mediumIntensity, highIntensity, extremeIntensity
 }

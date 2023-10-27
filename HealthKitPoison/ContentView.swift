@@ -18,8 +18,8 @@ struct ContentView: View {
         .padding()
         .onAppear {
             var totalSteps = 0.0
-            Poisoner().poisonValues(for: Date()).filter { $0.sampleType == HealthType.heartRate } .sorted { $0.date < $1.date } .forEach {
-                print($0)
+            Poisoner().poisonValues(for: Date()).filter { $0.sampleType == HealthType.stepCount } .sorted { $0.date < $1.date } .forEach {
+                print($0.date, $0.value)
                 totalSteps += $0.value
             }
 
