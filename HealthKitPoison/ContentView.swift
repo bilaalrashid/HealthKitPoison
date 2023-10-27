@@ -16,6 +16,15 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        .onAppear {
+            var totalSteps = 0.0
+            Poisoner().poisonValues(for: Date()).sorted { $0.date < $1.date } .forEach {
+                print($0)
+                totalSteps += $0.value
+            }
+
+            print(totalSteps)
+        }
     }
 }
 

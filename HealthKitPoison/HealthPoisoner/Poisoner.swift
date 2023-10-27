@@ -10,10 +10,6 @@ import HealthKit
 
 struct Poisoner {
 
-    enum ActivityLevel {
-        case resting, awake, moderateExercise, intenseExercise
-    }
-
     func poisonValues(for date: Date) -> [HealthValue] {
         let activityHours = self.activityHours(for: date)
 
@@ -28,32 +24,16 @@ struct Poisoner {
     }
 
     func activityHours(for date: Date) -> [Int: ActivityLevel] {
-        return [
-            0: .resting,
-            1: .resting,
-            2: .resting,
-            3: .resting,
-            4: .resting,
-            5: .resting,
-            6: .resting,
-            7: .resting,
-            8: .awake,
-            9: .awake,
-            10: .awake,
-            11: .awake,
-            12: .moderateExercise,
-            13: .awake,
-            14: .awake,
-            15: .awake,
-            16: .awake,
-            17: .awake,
-            18: .awake,
-            19: .intenseExercise,
-            20: .moderateExercise,
-            21: .awake,
-            22: .resting,
-            23: .resting,
-        ]
+        let shouldChooseAnomaly = Int.random(in: 0..<30) == 1
+        if shouldChooseAnomaly {
+            return Personas.anomalies.randomElement()!
+        }
+
+        if Calendar.current.isDateInWeekend(date) {
+            return Personas.weekend.randomElement()!
+        } else {
+            return Personas.weekdays.randomElement()!
+        }
     }
 
     func values(for hour: Date, activityLevel: ActivityLevel) -> [HealthValue] {
@@ -83,11 +63,15 @@ struct Poisoner {
             case .resting:
                 return nil
             case .awake:
-                value = Int.random(in: 1..<30)
-            case .moderateExercise:
-                value = Int.random(in: 20..<50)
-            case .intenseExercise:
-                value = Int.random(in: 50..<120)
+                value = Int.random(in: 1..<20)
+            case .lowIntensity:
+                value = Int.random(in: 5..<50)
+            case .mediumIntensity:
+                value = Int.random(in: 50..<80)
+            case .highIntensity:
+                value = Int.random(in: 80..<150)
+            case .extremeIntensity:
+                value = Int.random(in: 140..<300)
             }
             return HealthValue(sampleType: type, value: Double(value), unit: .count(), date: date)
         default:
@@ -108,7 +92,7 @@ struct Poisoner {
             }
         }
 
-        // Tracker issue/outage (happens often)
+        // Simulate tracker issue/outage (happens often)
         let shouldDropData = Int.random(in: 1..<4) == 1
         if shouldDropData {
             let half = minutes.count / 2 + minutes.count % 2

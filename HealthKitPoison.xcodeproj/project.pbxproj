@@ -17,6 +17,8 @@
 		3A13A1722AEB141A00A303C8 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A1712AEB141A00A303C8 /* HealthStore.swift */; };
 		3A13A1742AEB145200A303C8 /* Poisoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A1732AEB145200A303C8 /* Poisoner.swift */; };
 		3A13A1762AEB152B00A303C8 /* HealthValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A1752AEB152B00A303C8 /* HealthValue.swift */; };
+		3A13A1782AEC4A9700A303C8 /* Personas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A1772AEC4A9700A303C8 /* Personas.swift */; };
+		3A13A17A2AEC4AD800A303C8 /* ActivityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A1792AEC4AD800A303C8 /* ActivityLevel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		3A13A1712AEB141A00A303C8 /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		3A13A1732AEB145200A303C8 /* Poisoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poisoner.swift; sourceTree = "<group>"; };
 		3A13A1752AEB152B00A303C8 /* HealthValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthValue.swift; sourceTree = "<group>"; };
+		3A13A1772AEC4A9700A303C8 /* Personas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personas.swift; sourceTree = "<group>"; };
+		3A13A1792AEC4AD800A303C8 /* ActivityLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,8 @@
 				3A13A1712AEB141A00A303C8 /* HealthStore.swift */,
 				3A13A1732AEB145200A303C8 /* Poisoner.swift */,
 				3A13A1752AEB152B00A303C8 /* HealthValue.swift */,
+				3A13A1772AEC4A9700A303C8 /* Personas.swift */,
+				3A13A1792AEC4AD800A303C8 /* ActivityLevel.swift */,
 			);
 			path = HealthPoisoner;
 			sourceTree = "<group>";
@@ -166,11 +172,13 @@
 				3A13A1742AEB145200A303C8 /* Poisoner.swift in Sources */,
 				3A13A16E2AEB11ED00A303C8 /* HealthError.swift in Sources */,
 				3A13A1722AEB141A00A303C8 /* HealthStore.swift in Sources */,
+				3A13A1782AEC4A9700A303C8 /* Personas.swift in Sources */,
 				3A13A1702AEB120900A303C8 /* HealthType.swift in Sources */,
 				3A13A15F2AEB10EF00A303C8 /* ContentView.swift in Sources */,
 				3A13A15D2AEB10EF00A303C8 /* HealthKitPoisonApp.swift in Sources */,
 				3A13A16B2AEB117200A303C8 /* HealthManager.swift in Sources */,
 				3A13A1762AEB152B00A303C8 /* HealthValue.swift in Sources */,
+				3A13A17A2AEC4AD800A303C8 /* ActivityLevel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
