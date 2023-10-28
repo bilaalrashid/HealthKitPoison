@@ -1,6 +1,6 @@
 #  HealthKitPoison
 
-A quick proof-of-concept that shows how to spoof authentic data in HealthKit.
+A quick proof-of-concept that demonstrates spoofing authentic data in HealthKit.
 
 ## Mitigations
 
