@@ -318,6 +318,7 @@
 				DEVELOPMENT_TEAM = 9A9X3S8Q4P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "终极健身追踪器";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Required to read/write to the Health app";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Required to read/write to the Health app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -330,7 +331,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.bilaal.HealthKitPoison;
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.fitnesstrackerultimate.-------";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -350,6 +351,7 @@
 				DEVELOPMENT_TEAM = 9A9X3S8Q4P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "终极健身追踪器";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Required to read/write to the Health app";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Required to read/write to the Health app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -362,7 +364,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.bilaal.HealthKitPoison;
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.fitnesstrackerultimate.-------";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
