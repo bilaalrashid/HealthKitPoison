@@ -12,6 +12,16 @@ struct Poisoner {
 
     let poisonTypes = [HealthType.stepCount, HealthType.heartRate]
 
+    func poison(for date: Date) async throws {
+        let poisonValues = self.poisonValues(for: date)
+
+        for value in poisonValues {
+            let quantity = HKQuantity(unit: value.unit, doubleValue: value.value)
+            let sample = HKQuantitySample(type: value.sampleType, quantity: quantity, start: value.date, end: value.date)
+            try await HKHealthStore().save(sample)
+        }
+    }
+
     func poisonValues(for date: Date) -> [HealthValue] {
         var activityHours = self.activityHours(for: date)
         activityHours[-1] = activityHours[0]
@@ -19,13 +29,15 @@ struct Poisoner {
 
         var values = [HealthValue]()
 
+        let midnight = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: date, direction: .forward)!
+
         for index in 0...23 {
             let hour = index
             let activityLevel = activityHours[hour]!
             let previousActivityLevel = activityHours[hour-1]!
             let nextActivityLevel = activityHours[hour+1]!
 
-            let hourDate = Calendar.current.date(bySetting: .hour, value: hour, of: date)!
+            let hourDate = Calendar.current.date(bySetting: .hour, value: hour, of: midnight)!
             values.append(contentsOf: self.values(for: hourDate, activityLevel: activityLevel, previousActivityLevel: previousActivityLevel, nextActivityLevel: nextActivityLevel))
         }
 
@@ -61,7 +73,12 @@ struct Poisoner {
     }
 
     func randomValue(for hour: Date, minute: Int, activityLevel: ActivityLevel, previousActivityLevel: ActivityLevel, nextActivityLevel: ActivityLevel, type: HKQuantityType) -> HealthValue? {
-        guard let range = self.range(for: activityLevel, type: type) else { return nil }
+        guard let config = self.config(for: activityLevel, type: type) else { return nil }
+
+        let range = config.range
+        let unit = config.unit
+        let minValue = config.min
+
         var value = Int.random(in: range)
 
         let adjustedMinute = Calendar.current.date(bySetting: .minute, value: minute, of: hour)!
@@ -75,53 +92,57 @@ struct Poisoner {
 
         // This is deliberately imperfect - there should be some dramatic spikes in activity (as long as they don't occur on hour boundaries)
         if Double(minute) < previousMinuteThreshold {
-            let averagePreviousValue = (self.range(for: previousActivityLevel, type: type) ?? 0..<1).middle!
+            let averagePreviousValue = range.middle!
             let transitionAverage = (Double(averagePreviousValue) + Double(value)) / 2.0
 
             let difference = value - Int(transitionAverage)
             value = value - difference - (minute * previousHourDifference)
         } else if Double(minute) > (60 - nextMinuteThreshold) {
-            let averageNextValue = (self.range(for: nextActivityLevel, type: type) ?? 0..<1).middle!
+            let averageNextValue = range.middle!
             let transitionAverage = (Double(averageNextValue) + Double(value)) / 2.0
 
             let difference = value - Int(transitionAverage)
             value = value - difference - ((60 - minute) * previousHourDifference)
         }
 
-        return HealthValue(sampleType: type, value: Double(value), unit: .count(), date: date)
+        if value < minValue {
+            return nil
+        }
+
+        return HealthValue(sampleType: type, value: Double(value), unit: unit, date: date)
     }
 
-    func range(for activityLevel: ActivityLevel, type: HKQuantityType) -> Range<Int>? {
+    func config(for activityLevel: ActivityLevel, type: HKQuantityType) -> (range: Range<Int>, unit: HKUnit, min: Int)? {
         switch type {
         case HealthType.stepCount:
             switch activityLevel {
             case .resting:
                 return nil
             case .awake:
-                return 1..<20
+                return (1..<20, .count(), 0)
             case .lowIntensity:
-                return 5..<50
+                return (5..<50, .count(), 0)
             case .mediumIntensity:
-                return 50..<80
+                return (50..<80, .count(), 0)
             case .highIntensity:
-                return 80..<150
+                return (80..<150, .count(), 0)
             case .extremeIntensity:
-                return 140..<300
+                return (140..<300, .count(), 0)
             }
         case HealthType.heartRate:
             switch activityLevel {
             case .resting:
-                return 50..<70
+                return (50..<70, .count().unitDivided(by: .minute()), 50)
             case .awake:
-                return 50..<70
+                return (50..<70, .count().unitDivided(by: .minute()), 50)
             case .lowIntensity:
-                return 55..<80
+                return (55..<80, .count().unitDivided(by: .minute()), 50)
             case .mediumIntensity:
-                return 67..<85
+                return (67..<85, .count().unitDivided(by: .minute()), 50)
             case .highIntensity:
-                return 80..<100
+                return (80..<100, .count().unitDivided(by: .minute()), 50)
             case .extremeIntensity:
-                return 100..<140
+                return (100..<140, .count().unitDivided(by: .minute()), 50)
             }
         default:
             fatalError()

@@ -15,8 +15,7 @@ struct HealthManager {
     private static var sampleTypes: Set<HKSampleType> {
         return [
             HealthType.stepCount,
-            HealthType.basalEnergyBurned,
-            HealthType.activeEnergyBurned
+            HealthType.heartRate
         ]
     }
 
