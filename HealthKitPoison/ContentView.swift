@@ -22,12 +22,14 @@ struct ContentView: View {
             }
             .buttonStyle(.borderedProminent)
 
-            Button("Poison Last Month") {
-                Task {
-                    await self.savePoisonDataForPastMonth()
+            if #available(iOS 16, *) {
+                Button("Poison Last Month") {
+                    Task {
+                        await self.savePoisonDataForPastMonth()
+                    }
                 }
+                .buttonStyle(.borderedProminent)
             }
-            .buttonStyle(.borderedProminent)
         }
         .padding()
         .onAppear {
@@ -46,6 +48,7 @@ struct ContentView: View {
         }
     }
 
+    @available(iOS 16, *)
     private func savePoisonDataForPastMonth() async {
         let endDate = Date()
         let startDate = Calendar.current.date(byAdding: .day, value: -30, to: endDate)!
