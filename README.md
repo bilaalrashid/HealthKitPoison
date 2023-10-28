@@ -2,6 +2,10 @@
 
 A quick proof-of-concept that demonstrates spoofing authentic data in HealthKit.
 
+## Overview
+
+The app generates spoof step count and heart rate data. It uses a series of personas describing different levels of activity throughout the day, with various different activity personas for weekdays, weekends and anomalous/illness days. No two generated days will be alike.
+
 ## Mitigations
 
 Two main (but ineffective) options exist to detect inauthentic data:
