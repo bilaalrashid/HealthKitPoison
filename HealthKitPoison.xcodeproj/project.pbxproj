@@ -19,6 +19,7 @@
 		3A13A1782AEC4A9700A303C8 /* Personas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A1772AEC4A9700A303C8 /* Personas.swift */; };
 		3A13A17A2AEC4AD800A303C8 /* ActivityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A1792AEC4AD800A303C8 /* ActivityLevel.swift */; };
 		3A13A17C2AED5B9F00A303C8 /* Array+Middle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A17B2AED5B9F00A303C8 /* Array+Middle.swift */; };
+		3A13A1812AEDC4C000A303C8 /* PoisonIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13A1802AEDC4C000A303C8 /* PoisonIntent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		3A13A1792AEC4AD800A303C8 /* ActivityLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevel.swift; sourceTree = "<group>"; };
 		3A13A17B2AED5B9F00A303C8 /* Array+Middle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Middle.swift"; sourceTree = "<group>"; };
 		3A13A17D2AED782700A303C8 /* HealthKitPoison.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthKitPoison.entitlements; sourceTree = "<group>"; };
+		3A13A1802AEDC4C000A303C8 /* PoisonIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoisonIntent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				3A13A15E2AEB10EF00A303C8 /* ContentView.swift */,
 				3A13A1602AEB10F000A303C8 /* Assets.xcassets */,
 				3A13A1622AEB10F000A303C8 /* Preview Content */,
+				3A13A1802AEDC4C000A303C8 /* PoisonIntent.swift */,
 			);
 			path = HealthKitPoison;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				3A13A17C2AED5B9F00A303C8 /* Array+Middle.swift in Sources */,
 				3A13A16B2AEB117200A303C8 /* HealthManager.swift in Sources */,
 				3A13A1762AEB152B00A303C8 /* HealthValue.swift in Sources */,
+				3A13A1812AEDC4C000A303C8 /* PoisonIntent.swift in Sources */,
 				3A13A17A2AEC4AD800A303C8 /* ActivityLevel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
